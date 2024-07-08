@@ -26,7 +26,8 @@ public class Client implements ClientModInitializer {
             for (Mod module : ModuleManager.INSTANCE.getModules()) {
                 if (key == module.getKey()) module.toggle();
             }
-        };
+            if (key == GLFW.GLFW_KEY_RIGHT_ALT) mc.setScreen(ClickGUI.INSTANCE);
+        }
     }
 
     public void onTick() {

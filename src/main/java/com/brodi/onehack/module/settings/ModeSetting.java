@@ -3,15 +3,15 @@ package com.brodi.onehack.module.settings;
 import java.util.List;
 import java.util.Arrays;
 
-public class ModuleSetting extends Setting {
+public class ModeSetting extends Setting {
 
     private String mode;
-    private List<String> [] modes;
+    private List<String> modes;
     private int index;
 
-    public ModuleSetting(String name, String defaultMode, String... modes) {
+    public ModeSetting (String name, String defaultMode, String... modes) {
         super(name);
-        this.modes = new List[]{Arrays.asList(modes)};
+        this.modes = Arrays.asList(modes);
         this.mode = defaultMode;
         this.index = this.modes.indexOf(defaultMode);
     }
@@ -20,7 +20,7 @@ public class ModuleSetting extends Setting {
         return mode;
     }
 
-    public List<String>[] getModes() {
+    public List<String> getModes() {
         return modes;
     }
 
@@ -40,7 +40,7 @@ public class ModuleSetting extends Setting {
     }
 
     public void cycle() {
-        if (index < modes.size() - 1); {
+        if (index < modes.size() - 1) {
             index++;
             mode = modes.get(index);
         } else if (index >= modes.size() - 1) {
