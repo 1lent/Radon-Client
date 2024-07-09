@@ -7,9 +7,6 @@ import com.brodi.onehack.ui.Hud;
 import net.minecraft.client.MinecraftClient;
 import java.awt.*;
 
-import static com.brodi.onehack.ui.Hud.mc;
-
-
 public class ModuleButton {
     protected MinecraftClient mc = MinecraftClient.getInstance();
     public Mod module;
