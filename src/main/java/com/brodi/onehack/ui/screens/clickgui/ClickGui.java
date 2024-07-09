@@ -21,7 +21,7 @@ public class ClickGui extends Screen {
 
         int offset = 20;
         for (Category category : Category.values()) {
-            frames.add(new Frame(category, offset, 30, 100, 30));
+            frames.add(new Frame(category, offset, 25, 100, 30));
             offset += 120;
         }
 
@@ -31,9 +31,10 @@ public class ClickGui extends Screen {
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         for (Frame frame : frames) {
             frame.render(context, mouseX, mouseY, delta);
+            frame.updatePosition(mouseX, mouseY);
         }
             super.render(context, mouseX, mouseY, delta);
-        }
+    }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
@@ -41,8 +42,13 @@ public class ClickGui extends Screen {
             frame.mouseClicked(mouseX, mouseY, button);
         }
             return super.mouseClicked(mouseX, mouseY, button);
-
-
+    }
+    @Override
+    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        for (Frame frame : frames) {
+            frame.mouseReleased(mouseX, mouseY, button);
         }
+        return super.mouseReleased(mouseX, mouseY, button);
+    }
 }
 

@@ -1,4 +1,5 @@
 package com.brodi.onehack;
+import com.brodi.onehack.ui.screens.clickgui.ClickGui;
 import net.minecraft.client.MinecraftClient;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -26,7 +27,7 @@ public class Client implements ClientModInitializer {
             for (Mod module : ModuleManager.INSTANCE.getModules()) {
                 if (key == module.getKey()) module.toggle();
             }
-            if (key == GLFW.GLFW_KEY_RIGHT_ALT) mc.setScreen(ClickGUI.INSTANCE);
+            if (key == GLFW.GLFW_KEY_RIGHT_CONTROL) mc.setScreen(ClickGui.INSTANCE);
         }
     }
 

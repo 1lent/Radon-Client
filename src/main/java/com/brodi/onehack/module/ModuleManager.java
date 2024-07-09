@@ -25,6 +25,17 @@ public class ModuleManager {
         }
         return enabled;
     }
+    public List<Mod> getModulesInCategory(Mod.Category category) {
+        List<Mod> categoryModules = new ArrayList<>();
+
+        for (Mod module : modules) {
+            if (module.getCategory() == category) {
+                categoryModules.add(mod);
+            }
+        }
+
+        return categoryModules;
+    }
 
     private void addModules() {
         modules.add(new Flight());
