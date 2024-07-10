@@ -14,4 +14,7 @@ public class BooleanSetting  extends Setting{
         this.enabled = !this.enabled;
     };
 
+    public boolean isEnabled() {
+        return enabled;
+    }
 }

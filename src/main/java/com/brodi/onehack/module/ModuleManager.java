@@ -1,6 +1,7 @@
 package com.brodi.onehack.module;
 import com.brodi.onehack.movement.Flight;
 import com.brodi.onehack.movement.Sprint;
+import com.brodi.onehack.module.Mod;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ public class ModuleManager {
     public List<Mod> getModulesInCategory(Mod.Category category) {
         List<Mod> categoryModules = new ArrayList<>();
 
-        for (Mod module : modules) {
-            if (module.getCategory() == category) {
+        for (Mod mod : modules) {
+            if (mod.getCategory() == category) {
                 categoryModules.add(mod);
             }
         }

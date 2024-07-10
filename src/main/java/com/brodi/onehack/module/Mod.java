@@ -1,7 +1,11 @@
 package com.brodi.onehack.module;
 
 
+import com.brodi.onehack.module.settings.Setting;
 import net.minecraft.client.MinecraftClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Mod {
 
@@ -11,6 +15,8 @@ public class Mod {
     private int key;
     private Category category;
     private boolean enabled;
+
+    private List<Setting> settings = new ArrayList<Setting>();
 
     protected MinecraftClient mc = MinecraftClient.getInstance();
 
@@ -22,6 +28,17 @@ public class Mod {
 
     }
 
+    public List<Setting> getSettings() {
+        return settings;
+    }
+
+    public void addSetting(Setting setting) {
+        settings.add(setting);
+    }
+
+    public void addSettings(Setting... settings) {
+        for (Setting setting : settings) addSetting(setting);
+    }
 
     public void toggle() {
         this.enabled = !this.enabled;
@@ -96,7 +113,7 @@ public class Mod {
         WORLD("World"),
         MISC("Misc");
 
-        public static String name;
+        public String name;
 
         private Category(String name) {
             this.name = name;
