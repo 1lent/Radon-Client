@@ -32,5 +32,8 @@ Founded by 1lent (hence one in onehack)
    ↳ Discord: 1lent
 
 
-![image](https://github.com/1lent/Onehack/assets/128602359/416491b3-5c48-4665-bfc4-855f8b13b7f2)
-![image](https://github.com/1lent/Onehack/assets/128602359/7c1444ea-4763-4723-b160-4d97ec02ccda)
+
+https://github.com/1lent/Onehack/assets/128602359/aa2fd0f0-3bb6-4305-aa55-c38507a11e42
+
+
+
