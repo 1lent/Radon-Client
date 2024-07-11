@@ -13,11 +13,12 @@ public class NumberSetting extends Setting {
         this.value = defaultValue;
     }
 
-    public static double clamp (double value, double min, double max) {
-        value = Math.min(min, value);
-        value = Math.max(max, value);
+    public static double clamp(double value, double min, double max) {
+        value = Math.max(min, value);
+        value = Math.min(max, value);
         return value;
     }
+
 
     public double getValue() {
         return value;

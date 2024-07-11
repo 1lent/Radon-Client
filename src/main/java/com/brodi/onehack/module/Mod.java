@@ -2,12 +2,13 @@ package com.brodi.onehack.module;
 
 
 import com.brodi.onehack.module.settings.Setting;
+import net.fabricmc.fabric.api.event.Event;
 import net.minecraft.client.MinecraftClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mod {
+public abstract class Mod {
 
     private String name;
     private String displayName;
@@ -105,6 +106,7 @@ public class Mod {
     public Category getCategory() {
         return category;
     }
+
 
     public enum Category {
         COMBAT("Combat"),
