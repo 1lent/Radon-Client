@@ -4,7 +4,7 @@
 
 
 
-Version 1.1 Beta release,
+Version 1.2 Beta release,
 
 
 Founded by 1lent (hence one in onehack)
@@ -15,7 +15,7 @@ Founded by 1lent (hence one in onehack)
 
 - Works for 1.20.1 - .20.4 dont know about 1.21 yet
 - Shows What is activated on the right of your screen.
-- v = sprint, l = fly.
+- v = sprint, l (not I) = fly.
 - Right CTRL = open GUI,
    ↳  you can drag around the tabs in the gui and right click to open the ones that have module inside. (movement just of now)
 
@@ -27,7 +27,7 @@ Founded by 1lent (hence one in onehack)
 - Contributions Appreciated if you want to contribute
 - Working on more UI And more modules.
 
-  Slider is broken fixing that currently.
+  Slider fixed for speed.
 
    ↳ Discord: 1lent
 
