@@ -16,8 +16,7 @@ public class Hud {
     private static final int TEXT_SPACING = 2; // Spacing between text lines
 
     public static void render(DrawContext context, float tickDelta) {
-        context.drawText(mc.textRenderer, "OneHack", MARGIN, MARGIN, TEXT_COLOR, true);
-        renderArrayList(context);
+
     }
 
     public static void renderArrayList(DrawContext context) {
