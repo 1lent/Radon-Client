@@ -2,6 +2,8 @@ package com.brodi.onehack.module;
 import com.brodi.onehack.movement.Flight;
 import com.brodi.onehack.movement.Sprint;
 import com.brodi.onehack.module.Mod;
+import com.brodi.onehack.render.FpsMod;
+import com.brodi.onehack.render.PlayerESP;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -41,6 +43,8 @@ public class ModuleManager {
     private void addModules() {
         modules.add(new Flight());
         modules.add(new Sprint());
+        modules.add(new PlayerESP());
+        modules.add(new FpsMod());
     }
 
 

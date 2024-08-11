@@ -4,7 +4,7 @@ import com.brodi.onehack.module.settings.NumberSetting;
 import com.brodi.onehack.module.settings.Setting;
 import com.brodi.onehack.ui.screens.clickgui.ModuleButton;
 import net.minecraft.client.gui.DrawContext;
-
+import com.brodi.onehack.module.settings.NumberSetting;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -30,6 +30,7 @@ public class Slider extends Component{
         context.fill(parent.parent.x, parent.parent.y + parent.offset + offset, parent.parent.x + renderWidth, parent.parent.y + parent.offset + offset + parent.parent.height, Color.red.getRGB());
 
         if (sliding) {
+            System.out.println("min:"+numSet.getMin()+"inc: "+numSet.getIncrement() + "max: " + numSet.getMax() +"default val: "+ numSet.getValue());
             if (diff == 0) {
                 numSet.setValue(numSet.getMin());
             } else {

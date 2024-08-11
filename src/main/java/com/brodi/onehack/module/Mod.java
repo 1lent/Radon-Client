@@ -4,6 +4,7 @@ package com.brodi.onehack.module;
 import com.brodi.onehack.module.settings.Setting;
 import net.fabricmc.fabric.api.event.Event;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.effect.StatusEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +106,10 @@ public abstract class Mod {
 
     public Category getCategory() {
         return category;
+    }
+
+    public final StatusEffect setGlowing() {
+        return null;
     }
 
 

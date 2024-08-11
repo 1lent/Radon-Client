@@ -42,7 +42,7 @@ public class Frame {
     }
 
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        context.fill(x, y, x + width, y + height, Color.RED.getRGB());
+        context.fill(x, y, x + width, y + height, Color.red.getRGB());
         int offset = ((height/2) - mc.textRenderer.fontHeight / 2);
 
         context.drawText(mc.textRenderer, category.name, x + offset, y + offset, -1, true);
