@@ -1,7 +1,7 @@
 package com.brodi.onehack.module;
+
 import com.brodi.onehack.movement.Flight;
 import com.brodi.onehack.movement.Sprint;
-import com.brodi.onehack.module.Mod;
 import com.brodi.onehack.render.FpsMod;
 import com.brodi.onehack.render.PlayerESP;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ModuleManager {
 
     public static final ModuleManager INSTANCE = new ModuleManager();
-    private  List<Mod> modules = new ArrayList<>();
+    private List<Mod> modules = new ArrayList<>();
 
     public ModuleManager() {
         addModules();
@@ -28,15 +28,14 @@ public class ModuleManager {
         }
         return enabled;
     }
+
     public List<Mod> getModulesInCategory(Mod.Category category) {
         List<Mod> categoryModules = new ArrayList<>();
-
         for (Mod mod : modules) {
             if (mod.getCategory() == category) {
                 categoryModules.add(mod);
             }
         }
-
         return categoryModules;
     }
 
@@ -46,7 +45,4 @@ public class ModuleManager {
         modules.add(new PlayerESP());
         modules.add(new FpsMod());
     }
-
-
-
 }

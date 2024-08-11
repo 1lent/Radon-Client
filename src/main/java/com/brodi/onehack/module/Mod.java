@@ -1,8 +1,6 @@
 package com.brodi.onehack.module;
 
-
 import com.brodi.onehack.module.settings.Setting;
-import net.fabricmc.fabric.api.event.Event;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.effect.StatusEffect;
 
@@ -18,7 +16,7 @@ public abstract class Mod {
     private Category category;
     private boolean enabled;
 
-    private List<Setting> settings = new ArrayList<Setting>();
+    private List<Setting> settings = new ArrayList<>();
 
     protected MinecraftClient mc = MinecraftClient.getInstance();
 
@@ -27,9 +25,9 @@ public abstract class Mod {
         this.displayName = name;
         this.description = description;
         this.category = category;
-
     }
 
+    // Getters and Setters
     public List<Setting> getSettings() {
         return settings;
     }
@@ -44,22 +42,20 @@ public abstract class Mod {
 
     public void toggle() {
         this.enabled = !this.enabled;
-
         if (enabled) onEnable();
         else onDisable();
-
     }
 
     public void onEnable() {
-
+        // Implement functionality when the mod is enabled
     }
 
     public void onDisable() {
-
+        // Implement functionality when the mod is disabled
     }
 
     public void onTick() {
-
+        // Implement functionality for each game tick
     }
 
     public String getDisplayName() {
@@ -108,11 +104,12 @@ public abstract class Mod {
         return category;
     }
 
+    // Placeholder implementation for setGlowing
     public final StatusEffect setGlowing() {
-        return null;
+        return null; // Modify if needed for specific functionality
     }
 
-
+    // Enum for module categories
     public enum Category {
         COMBAT("Combat"),
         MOVEMENT("Movement"),
@@ -120,7 +117,7 @@ public abstract class Mod {
         WORLD("World"),
         MISC("Misc");
 
-        public String name;
+        public final String name;
 
         private Category(String name) {
             this.name = name;

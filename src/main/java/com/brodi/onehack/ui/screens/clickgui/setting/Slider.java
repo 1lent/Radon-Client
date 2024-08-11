@@ -3,63 +3,79 @@ package com.brodi.onehack.ui.screens.clickgui.setting;
 import com.brodi.onehack.module.settings.NumberSetting;
 import com.brodi.onehack.module.settings.Setting;
 import com.brodi.onehack.ui.screens.clickgui.ModuleButton;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
-import com.brodi.onehack.module.settings.NumberSetting;
+
 import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Slider extends Component{
+public class Slider extends Component {
 
-    public NumberSetting numSet = (NumberSetting)setting;
-
+    private NumberSetting numSet;
     private boolean sliding = false;
+    private final MinecraftClient mc = MinecraftClient.getInstance();
+    private final TextRenderer textRenderer = mc.textRenderer;  // Adjust if textRenderer has a different name
 
     public Slider(Setting setting, ModuleButton parent, int offset) {
         super(setting, parent, offset);
-        this.numSet = (NumberSetting)setting;
+        this.numSet = (NumberSetting) setting;
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        context.fill(parent.parent.x, parent.parent.y + parent.offset + offset, parent.parent.x + parent.parent.width, parent.parent.y + parent.offset + offset + parent.parent.height, new Color(0,0,0,160).getRGB());
+        int x = parent.parent.x;
+        int y = parent.parent.y + parent.offset + offset;
+        int width = parent.parent.width;
+        int height = parent.parent.height;
 
-        double diff = Math.min(parent.parent.width, Math.max(0, mouseX - parent.parent.x ));
-        int renderWidth = (int) (parent.parent.width * (numSet.getValue() - numSet.getMin()) / (numSet.getMax() - numSet.getMin()));
+        // Draw the background with rounded corners
+        context.fill(x, y, x + width, y + height, new Color(0, 0, 0, 160).getRGB());
 
-        context.fill(parent.parent.x, parent.parent.y + parent.offset + offset, parent.parent.x + renderWidth, parent.parent.y + parent.offset + offset + parent.parent.height, Color.red.getRGB());
+        // Slider fill
+        double mousePositionRelative = Math.min(width, Math.max(0, mouseX - x));
+        int renderWidth = (int) (width * (numSet.getValue() - numSet.getMin()) / (numSet.getMax() - numSet.getMin()));
+        context.fill(x, y, x + renderWidth, y + height, new Color(100, 150, 255).getRGB());
 
-        if (sliding) {
-            System.out.println("min:"+numSet.getMin()+"inc: "+numSet.getIncrement() + "max: " + numSet.getMax() +"default val: "+ numSet.getValue());
-            if (diff == 0) {
-                numSet.setValue(numSet.getMin());
-            } else {
-                numSet.setValue(roundToPlace(((diff / parent.parent.width) *  (numSet.getMax() - numSet.getMin()) + numSet.getMin()), 2));
-            }
-        }
-
-        int textOffset = ((parent.parent.height / 2) - parent.mc.textRenderer.fontHeight / 2);
-        context.drawText(mc.textRenderer, numSet.getName() + ": " + roundToPlace(numSet.getValue(), 2), parent.parent.x + textOffset, parent.parent.y + parent.offset + offset + textOffset, -1, true);
-        super.render(context, mouseX, mouseY, delta);
+        // Draw text
+        context.drawText(textRenderer, numSet.getName() + ": " + roundTo(numSet.getValue(), 2), x + 2, y + 2, -1, true);
     }
 
     @Override
     public void mouseClicked(double mouseX, double mouseY, int button) {
-        if (isHovered((int) mouseX, (int) mouseY)) sliding = true;
-        super.mouseClicked(mouseX, mouseY, button);
+        if (isHovered(mouseX, mouseY) && button == 0) {
+            sliding = true;
+            updateSlider(mouseX);
+        }
     }
 
     @Override
     public void mouseReleased(double mouseX, double mouseY, int button) {
-        sliding = false;
-        super.mouseReleased(mouseX, mouseY, button);
-    }
-    private double roundToPlace(double value, int place) {
-        if (place < 0) {
-            return value;
+        if (button == 0) {
+            sliding = false;
         }
-            BigDecimal bd = new BigDecimal(value);
-            bd = bd.setScale(place, RoundingMode.HALF_UP);
-            return bd.doubleValue();
+    }
+
+    @Override
+    public void updatePosition(double mouseX, double mouseY) {
+        if (sliding) {
+            updateSlider(mouseX);
+        }
+    }
+
+    private void updateSlider(double mouseX) {
+        int x = parent.parent.x;
+        int width = parent.parent.width;
+        double percentage = (mouseX - x) / width;
+        double newValue = numSet.getMin() + (numSet.getMax() - numSet.getMin()) * percentage;
+        numSet.setValue(Math.min(numSet.getMax(), Math.max(numSet.getMin(), newValue)));
+    }
+
+    private double roundTo(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

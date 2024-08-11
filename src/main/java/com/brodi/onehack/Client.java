@@ -27,7 +27,7 @@ public class Client implements ClientModInitializer {
             for (Mod module : ModuleManager.INSTANCE.getModules()) {
                 if (key == module.getKey()) module.toggle();
             }
-            if (key == GLFW.GLFW_KEY_RIGHT_CONTROL) mc.setScreen(ClickGui.INSTANCE);
+            if (key == GLFW.GLFW_KEY_RIGHT_SHIFT) mc.setScreen(ClickGui.INSTANCE);
         }
     }
 

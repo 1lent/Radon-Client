@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/onehack.main.iml" filepath="$PROJECT_DIR$/.idea/modules/onehack.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/onehack.test.iml" filepath="$PROJECT_DIR$/.idea/modules/onehack.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Onehack.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Onehack.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Onehack.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Onehack.test.iml" />
     </modules>
   </component>
 </project>

@@ -4,31 +4,37 @@ import com.brodi.onehack.module.Mod;
 import com.brodi.onehack.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
-import org.apache.logging.log4j.util.PropertySource;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class Hud {
 
-    private static MinecraftClient mc = MinecraftClient.getInstance();
+    private static final MinecraftClient mc = MinecraftClient.getInstance();
+    private static final int MARGIN = 10; // Margin from screen edge
+    private static final int TEXT_COLOR = -1; // Default text color
+    private static final int TEXT_SPACING = 2; // Spacing between text lines
 
-     public static void render(DrawContext context, float tickDelta) {
-        context.drawText(mc.textRenderer, "OneHack" , 10, 10, -1, true);
+    public static void render(DrawContext context, float tickDelta) {
+        context.drawText(mc.textRenderer, "OneHack", MARGIN, MARGIN, TEXT_COLOR, true);
         renderArrayList(context);
     }
 
     public static void renderArrayList(DrawContext context) {
         int index = 0;
-        int sWidth = mc.getWindow().getScaledWidth();
+        int screenWidth = mc.getWindow().getScaledWidth();
+        int fontHeight = mc.textRenderer.fontHeight;
 
+        // Get and sort enabled modules by display name width (largest first)
         List<Mod> enabledModules = ModuleManager.INSTANCE.getEnabledModules();
-
-        enabledModules.sort(Comparator.comparingInt(m -> mc.textRenderer.getWidth(((Mod)m).getDisplayName())).reversed());
+        enabledModules.sort(Comparator.comparingInt(mod -> -mc.textRenderer.getWidth(mod.getDisplayName())));
 
         for (Mod mod : enabledModules) {
-            context.drawText(mc.textRenderer, mod.getDisplayName(), (sWidth - 4) - mc.textRenderer.getWidth(mod.getDisplayName()), 10 + (index * mc.textRenderer.fontHeight), -1, true);
+            String displayName = mod.getDisplayName();
+            int textWidth = mc.textRenderer.getWidth(displayName);
+
+            // Draw the module name, aligned to the right
+            context.drawText(mc.textRenderer, displayName, screenWidth - MARGIN - textWidth, MARGIN + (index * (fontHeight + TEXT_SPACING)), TEXT_COLOR, true);
             index++;
         }
     }
