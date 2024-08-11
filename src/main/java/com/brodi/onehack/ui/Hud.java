@@ -33,8 +33,8 @@ public class Hud {
             int textWidth = mc.textRenderer.getWidth(displayName);
 
             // Draw the module name, aligned to the right
-            context.drawText(mc.textRenderer, displayName, screenWidth - MARGIN - textWidth, MARGIN + (index * (fontHeight + TEXT_SPACING)), TEXT_COLOR, true);
-            index++;
+//            context.drawText(mc.textRenderer, displayName, screenWidth - MARGIN - textWidth, MARGIN + (index * (fontHeight + TEXT_SPACING)), TEXT_COLOR, true);
+//            index++;
         }
     }
 }
