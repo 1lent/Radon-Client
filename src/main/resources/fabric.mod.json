@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "OneClient",
+  "id": "oneclient",
   "version": "${version}",
   "name": "OneClient",
   "description": "OneClient",
