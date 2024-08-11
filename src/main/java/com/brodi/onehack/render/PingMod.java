@@ -16,7 +16,7 @@ public class PingMod extends Mod {
 
     public PingMod() {
         super("Ping", "Shows Ping on the screen", Category.RENDER);
-        this.setKey(GLFW.GLFW_KEY_G);
+        this.setKey(GLFW.GLFW_KEY_P);
 
         // Register HUD render callback
         HudRenderCallback.EVENT.register((context, tickDelta) -> {
@@ -27,14 +27,14 @@ public class PingMod extends Mod {
     private void renderPing(DrawContext context, float tickDelta) {
         // Get FPS from the Minecraft client
         int ping = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(MinecraftClient.getInstance().player.getUuid()).getLatency();
-        String pingText = ping + " ms";
+        String pingText = "ping " + ping + "ms";
 
         // Create a Text object
         Text text = Text.of(pingText);
 
         // Calculate position for text
         int x = mc.getWindow().getScaledWidth() - 150;
-        int y = 10;
+        int y = 30;
 
 
         // Draw background rectangle with a shadow effect
