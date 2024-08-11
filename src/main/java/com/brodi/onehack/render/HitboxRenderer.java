@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Box;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+import org.lwjgl.opengl.GL11;
 
 public class HitboxRenderer extends Mod {
 
@@ -23,11 +24,12 @@ public class HitboxRenderer extends Mod {
     @Override
     public void onEnable() {
         WorldRenderEvents.BEFORE_DEBUG_RENDER.register(HitboxRenderer::onRenderWorld);
+
     }
 
     @Override
     public void onDisable() {
-        // Add a condition in onRenderWorld to check if this mod is enabled.
+
     }
 
     public static void onRenderWorld(WorldRenderContext context) {
@@ -67,20 +69,34 @@ public class HitboxRenderer extends Mod {
 
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
-        bufferBuilder.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
+        bufferBuilder.begin(VertexFormat.DrawMode.LINES, VertexFormats.POSITION_COLOR);
 
-        // Draw the bounding box
-        bufferBuilder.vertex(matrices.peek().getPositionMatrix(), (float) boundingBox.minX, (float) boundingBox.minY, (float) boundingBox.minZ).color(1.0f, 0.0f, 0.0f, 0.5f).next();
-        bufferBuilder.vertex(matrices.peek().getPositionMatrix(), (float) boundingBox.maxX, (float) boundingBox.minY, (float) boundingBox.minZ).color(1.0f, 0.0f, 0.0f, 0.5f).next();
-        bufferBuilder.vertex(matrices.peek().getPositionMatrix(), (float) boundingBox.maxX, (float) boundingBox.minY, (float) boundingBox.maxZ).color(1.0f, 0.0f, 0.0f, 0.5f).next();
-        bufferBuilder.vertex(matrices.peek().getPositionMatrix(), (float) boundingBox.minX, (float) boundingBox.minY, (float) boundingBox.maxZ).color(1.0f, 0.0f, 0.0f, 0.5f).next();
+        // Bottom face
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.minY, boundingBox.minZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.maxX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.minY, boundingBox.maxZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.maxX, boundingBox.minY, boundingBox.maxZ, boundingBox.minX, boundingBox.minY, boundingBox.maxZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.minX, boundingBox.minY, boundingBox.maxZ, boundingBox.minX, boundingBox.minY, boundingBox.minZ);
 
-        // Draw the other parts of the box (edges, sides, etc.)
-        // You would continue adding more vertices here to form the complete bounding box.
+        // Top face
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.minX, boundingBox.maxY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.minZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.maxX, boundingBox.maxY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ, boundingBox.minX, boundingBox.maxY, boundingBox.maxZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.minX, boundingBox.maxY, boundingBox.maxZ, boundingBox.minX, boundingBox.maxY, boundingBox.minZ);
+
+        // Vertical lines
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.minX, boundingBox.maxY, boundingBox.minZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.maxX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.minZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.maxX, boundingBox.minY, boundingBox.maxZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ);
+        drawBoundingBoxLine(bufferBuilder, matrices, boundingBox.minX, boundingBox.minY, boundingBox.maxZ, boundingBox.minX, boundingBox.maxY, boundingBox.maxZ);
 
         tessellator.draw();
 
         RenderSystem.enableDepthTest(); // Re-enable depth testing
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f); // Reset the shader color to default
+    }
+
+    private static void drawBoundingBoxLine(BufferBuilder buffer, MatrixStack matrices, double x1, double y1, double z1, double x2, double y2, double z2) {
+        buffer.vertex(matrices.peek().getPositionMatrix(), (float) x1, (float) y1, (float) z1).color(1.0f, 0.0f, 0.0f, 0.5f).next();
+        buffer.vertex(matrices.peek().getPositionMatrix(), (float) x2, (float) y2, (float) z2).color(1.0f, 0.0f, 0.0f, 0.5f).next();
     }
 }
