@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "onehack",
+  "id": "OneClient",
   "version": "${version}",
-  "name": "OneHackClient",
-  "description": "Onehack Client",
+  "name": "OneClient",
+  "description": "OneClient",
   "authors": [
-    "1lent"
+    "1lent, Banker, Hitman"
   ],
   "contact": {
     "homepage": "",
