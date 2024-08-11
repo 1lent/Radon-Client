@@ -37,6 +37,7 @@ public class KeystrokesOverlay extends Mod {
     private void renderKeystrokes(DrawContext context, float tickDelta) {
         int x = 10;
         int y = 10;
+        int z = 50;
         int spacing = 20;
 
         // Render WASD keys
@@ -44,6 +45,7 @@ public class KeystrokesOverlay extends Mod {
         drawKeyboardKey(context, "A", GLFW.GLFW_KEY_A, x, y + spacing);
         drawKeyboardKey(context, "S", GLFW.GLFW_KEY_S, x + spacing, y + spacing);
         drawKeyboardKey(context, "D", GLFW.GLFW_KEY_D, x + spacing * 2, y + spacing);
+        drawKeyboardKey(context, "Space", GLFW.GLFW_KEY_SPACE, 5 + spacing, z + spacing);
 
         // Render mouse buttons
         drawMouseButton(context, "LMB", GLFW.GLFW_MOUSE_BUTTON_1, x, y + spacing * 2);
