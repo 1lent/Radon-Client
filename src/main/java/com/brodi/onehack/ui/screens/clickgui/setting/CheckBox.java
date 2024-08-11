@@ -40,8 +40,9 @@ public class CheckBox extends Component {
             context.fill(x + 4, y + 4, x + width - 4, y + height - 4, Color.green.getRGB());
         }
 
+        //removed for now
         // Draw the setting name
-        context.drawText(mc.textRenderer, boolSet.getName(), x + height + 2, y + 2, Color.white.getRGB(), true);
+        //context.drawText(mc.textRenderer, boolSet.getName(), x + height + 2, y + 2, Color.white.getRGB(), true);
     }
 
     @Override

@@ -1,39 +1,28 @@
 
+# OneHack
+
 █▀█ █▄░█ █▀▀ █░█ ▄▀█ █▀▀ █▄▀  
-█▄█ █░▀█ ██▄ █▀█ █▀█ █▄▄ █░█
+█▄█ █░▀█ ██▄ █▀█ █▀█ █▄▄ █░█  
 
+Version 1.2 Beta Release
 
+Founded by 1lent (hence the "one" in OneHack)
 
-Version 1.2 Beta release,
+## Overview
+OneHack is a Java utility mod for experimenting with Java modding, specifically designed for Minecraft versions 1.20.1 through 1.20.4 (1.21 compatibility unknown).
 
+### Features:
+- Displays activated modules on the right side of your screen.
+  - **v** = Sprint
+  - **l** (not I) = Fly
+- **Right Shift** = Open GUI
+  - You can drag around the tabs in the GUI and right-click to open the ones that contain modules (currently only movement modules).
 
-Founded by 1lent (hence one in onehack)
+### Important:
+- **Do not leak** the source code or any internal details. Doing so will result in demotion and blacklist.
 
-# Java utility, experimenting with java modding
+### Contact:
+- Discord: 1lent
 
-
-
-- Works for 1.20.1 - .20.4 dont know about 1.21 yet
-- Shows What is activated on the right of your screen.
-- v = sprint, l (not I) = fly.
-- Right CTRL = open GUI,
-   ↳  you can drag around the tabs in the gui and right click to open the ones that have module inside. (movement just of now)
-
-
-
-
-
-
-- Contributions Appreciated if you want to contribute
-- Working on more UI And more modules.
-
-  Slider fixed for speed.
-
-   ↳ Discord: 1lent
-
-
-
-https://github.com/1lent/Onehack/assets/128602359/aa2fd0f0-3bb6-4305-aa55-c38507a11e42
-
-
-
+### Preview:
+[![OneHack Preview](https://github.com/1lent/Onehack/assets/128602359/aa2fd0f0-3bb6-4305-aa55-c38507a11e42)](https://github.com/1lent/Onehack/assets/128602359/aa2fd0f0-3bb6-4305-aa55-c38507a11e42)
