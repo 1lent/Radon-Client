@@ -1,4 +1,4 @@
-package com.brodi.onehack.ui.screens.clickgui.setting;
+package com.brodi.onehack.module.settings;
 
 import java.awt.Color;
 

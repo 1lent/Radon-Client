@@ -8,7 +8,7 @@ public abstract class Component {
 
     public final Setting setting;
     protected final ModuleButton parent;
-    protected final int offset;
+    public int offset;
 
     public Component(Setting setting, ModuleButton parent, int offset) {
         this.setting = setting;

@@ -1,12 +1,13 @@
 package com.brodi.onehack.ui.screens.clickgui;
 
-import com.brodi.onehack.module.Mod;
 import com.brodi.onehack.module.Mod.Category;
 import com.brodi.onehack.module.ModuleManager;
+import com.brodi.onehack.ui.screens.clickgui.setting.ColorPicker;
 import com.brodi.onehack.ui.screens.clickgui.setting.Component;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
+import com.brodi.onehack.module.Mod;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -119,7 +120,11 @@ public class Frame {
 
             if (button.extended) {
                 for (Component component : button.components) {
-                    if (component.setting.isVisible()) offset += height;
+                    if (component instanceof ColorPicker && ((ColorPicker) component).isSelecting()) {
+                        offset += 70; // Adjust the offset for the expanded ColorPicker
+                    } else {
+                        offset += height;
+                    }
                 }
             }
         }
