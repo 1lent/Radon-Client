@@ -42,9 +42,16 @@ public abstract class Mod {
 
     public void toggle() {
         this.enabled = !this.enabled;
-        if (enabled) onEnable();
-        else onDisable();
+        if (enabled) {
+            onEnable();
+            displayName = "§c" + name; // Display name in red when enabled
+        } else {
+            onDisable();
+            displayName = "§f" + name; // Display name in white when disabled
+        }
+        System.out.println("Toggled " + name + ": " + (enabled ? "Enabled" : "Disabled"));
     }
+
 
     public void onEnable() {
         // Implement functionality when the mod is enabled

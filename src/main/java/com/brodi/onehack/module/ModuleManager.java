@@ -3,6 +3,7 @@ package com.brodi.onehack.module;
 import com.brodi.onehack.movement.Sprint;
 import com.brodi.onehack.render.FpsMod;
 import com.brodi.onehack.render.HitboxRenderer;
+import com.brodi.onehack.render.KeystrokesOverlay;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -51,5 +52,6 @@ public class ModuleManager {
         modules.add(new Sprint());
         modules.add(new FpsMod());
         modules.add(new HitboxRenderer());
+        modules.add(new KeystrokesOverlay());
     }
 }
