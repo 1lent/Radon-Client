@@ -36,6 +36,7 @@ public class FpsMod extends Mod {
         int x = mc.getWindow().getScaledWidth() - 150;
         int y = 10;
 
+
         // Draw background rectangle with a shadow effect
         drawBackground(context, x, y, 100, 20, 0xAA000000); // Semi-transparent black
 
