@@ -2,6 +2,7 @@ package com.brodi.onehack.render;
 
 import com.brodi.onehack.module.Mod;
 import com.brodi.onehack.module.settings.ColorSetting;
+import com.brodi.onehack.module.settings.SpacebarSetting;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -18,10 +19,13 @@ public class KeystrokesOverlay extends Mod {
     // Color setting for the keystrokes
     public ColorSetting keystrokeColor = new ColorSetting("Keystroke Color", Color.RED);
 
+    public SpacebarSetting spacebarTick = new SpacebarSetting("Spacebar", Color.RED);
+
     public KeystrokesOverlay() {
         super("KeystrokesOverlay", "Displays keys pressed on the screen", Category.RENDER);
         this.setKey(GLFW.GLFW_KEY_K);
         addSettings(keystrokeColor); // Add the color setting
+        addSettings(spacebarTick);
     }
 
     @Override
