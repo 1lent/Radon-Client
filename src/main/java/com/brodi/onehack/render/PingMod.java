@@ -7,7 +7,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import com.brodi.onehack.module.Mod;
 import org.jetbrains.annotations.Nullable;
@@ -25,30 +24,30 @@ public class PingMod extends Mod {
         // Register HUD render callback
         HudRenderCallback.EVENT.register(this::renderPing);
     }
-    public static int getPing() {
+    public static void getPing() {
         MinecraftClient client = MinecraftClient.getInstance();
 
         // SP, LAN, MP on local machine
         if (client.isInSingleplayer() || client.isIntegratedServerRunning()) {
-            return 0;
+            return;
         }
 
         @Nullable ClientPlayNetworkHandler handler = client.getNetworkHandler();
         if (handler == null) {
-            return 0;
+            return;
         }
 
         @Nullable ClientPlayerEntity player = client.player;
         if (player == null) {
-            return 0;
+            return;
         }
 
         @Nullable PlayerListEntry playerEntry = handler.getPlayerListEntry(player.getUuid());
         if (playerEntry == null) {
-            return 0;
+            return;
         }
 
-        return playerEntry.getLatency();
+        playerEntry.getLatency();
     }
 
 
