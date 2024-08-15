@@ -4,9 +4,13 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import com.brodi.onehack.module.Mod;
+import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
 public class PingMod extends Mod {
@@ -19,15 +23,41 @@ public class PingMod extends Mod {
         this.setKey(GLFW.GLFW_KEY_P);
 
         // Register HUD render callback
-        HudRenderCallback.EVENT.register((context, tickDelta) -> {
-            renderPing(context, tickDelta);
-        });
+        HudRenderCallback.EVENT.register(this::renderPing);
+    }
+    public static int getPing() {
+        MinecraftClient client = MinecraftClient.getInstance();
+
+        // SP, LAN, MP on local machine
+        if (client.isInSingleplayer() || client.isIntegratedServerRunning()) {
+            return 0;
+        }
+
+        @Nullable ClientPlayNetworkHandler handler = client.getNetworkHandler();
+        if (handler == null) {
+            return 0;
+        }
+
+        @Nullable ClientPlayerEntity player = client.player;
+        if (player == null) {
+            return 0;
+        }
+
+        @Nullable PlayerListEntry playerEntry = handler.getPlayerListEntry(player.getUuid());
+        if (playerEntry == null) {
+            return 0;
+        }
+
+        return playerEntry.getLatency();
     }
 
+
     private void renderPing(DrawContext context, float tickDelta) {
+
+        getPing();
         // Get FPS from the Minecraft client
         int ping = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(MinecraftClient.getInstance().player.getUuid()).getLatency();
-        String pingText = "ping " + ping + "ms";
+        String pingText =  (ping + "ms");
 
         // Create a Text object
         Text text = Text.of(pingText);
