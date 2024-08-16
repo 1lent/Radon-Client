@@ -52,6 +52,6 @@ public class ModuleManager {
         modules.add(new HitboxRenderer());
         modules.add(new KeystrokesOverlay());
         modules.add(new PingMod());
-        modules.add(new coordsMod());
+        modules.add(new CoordsMod());
     }
 }

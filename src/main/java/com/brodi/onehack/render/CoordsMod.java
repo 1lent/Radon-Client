@@ -1,6 +1,7 @@
 package com.brodi.onehack.render;
 
 import com.brodi.onehack.module.Mod;
+import com.brodi.onehack.module.settings.SpacebarSetting;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -8,63 +9,76 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
+import java.awt.Color;
 
-public class coordsMod extends Mod {
+public class CoordsMod extends Mod {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static final TextRenderer textRenderer = mc.textRenderer;
 
+    private SpacebarSetting spacebarSetting;
 
-    public coordsMod() {
-        super("Coords", "shows coords", Category.RENDER);
+    public CoordsMod() {
+        super("Coords", "Displays current player coordinates", Category.RENDER);
         this.setKey(GLFW.GLFW_KEY_K);
+
+        // Initialize the spacebar setting
+        spacebarSetting = new SpacebarSetting("Spacebar Display", Color.WHITE);
+        this.addSetting(spacebarSetting);
 
         // Register HUD render callback
         HudRenderCallback.EVENT.register(this::renderCoords);
     }
 
-
-
     private void renderCoords(DrawContext context, float tickDelta) {
-        // Get FPS from the Minecraft client
-        assert mc.player != null;
-        int Xcoord = mc.player.getBlockX();
-        int Ycoord = mc.player.getBlockY();
-        int Zcoord = mc.player.getBlockZ();
-        String Coords = "X: " + Xcoord + " Y: " + Ycoord + " Z: " + Zcoord;
+        if (mc.player == null) return;
 
-        // Create a Text object
-        Text text = Text.of(Coords);
+        int xCoord = mc.player.getBlockX();
+        int yCoord = mc.player.getBlockY();
+        int zCoord = mc.player.getBlockZ();
+        String coords = String.format("X: %d Y: %d Z: %d", xCoord, yCoord, zCoord);
 
-        // Calculate position for text
-        int x = mc.getWindow().getScaledWidth() - 150;
-        int y = 50;
+        Text text = Text.of(coords);
 
+        int xPosition = mc.getWindow().getScaledWidth() - 150;
+        int yPosition = 50;
 
-        // Draw background rectangle with a shadow effect
-        drawBackground(context, x, y, 100, 20, 0xAA000000); // Semi-transparent black
+        // Draw background rectangle based on whether the spacebar setting is enabled
+        int backgroundHeight = spacebarSetting.isEnabled() ? 40 : 20;
+        drawBackground(context, xPosition, yPosition, 100, backgroundHeight, 0xAA000000);
 
-        // Draw FPS text with a custom color drawshadowed
-        context.drawTextWithShadow(textRenderer, text, x + 2, y + 2, 0xFFFFFF); // White text with shadow
+        // Draw coordinates text with shadow
+        context.drawTextWithShadow(textRenderer, text, xPosition + 2, yPosition + 2, 0xFFFFFF);
 
-
+        // Render spacebar if the setting is enabled
+        if (spacebarSetting.isEnabled()) {
+            renderSpacebar(context, xPosition + 2, yPosition + 22);
+        }
     }
 
     private void drawBackground(DrawContext context, int x, int y, int width, int height, int color) {
-        // Draw a semi-transparent background rectangle
         context.fill(x, y, x + width, y + height, color);
+    }
+
+    private void renderSpacebar(DrawContext context, int x, int y) {
+        String spacebarText = "Press SPACE to jump!";
+        Text spacebar = Text.of(spacebarText);
+
+        // Draw spacebar text with shadow
+        context.drawTextWithShadow(textRenderer, spacebar, x, y, spacebarSetting.getColor().getRGB());
     }
 
     @Override
     public void onEnable() {
-        // Additional setup when the mod is enabled, if necessary
+        // Optional setup when the mod is enabled
     }
 
     @Override
     public void onDisable() {
-        // Cleanup or reset when the mod is disabled, if necessary
+        // Optional cleanup when the mod is disabled
     }
 
     @Override
     public void onTick() {
-        // Update logic each tick, if necessary
-}}
+        // Optional logic to update each tick
+    }
+}
