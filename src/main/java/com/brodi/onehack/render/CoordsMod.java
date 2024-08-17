@@ -6,7 +6,10 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.biome.Biome;
 import org.lwjgl.glfw.GLFW;
 
 import java.awt.Color;
@@ -35,9 +38,11 @@ public class CoordsMod extends Mod {
         int xCoord = mc.player.getBlockX();
         int yCoord = mc.player.getBlockY();
         int zCoord = mc.player.getBlockZ();
+        assert mc.world != null;
+        float biome = mc.world.getBiome(BlockPos, mc.player.getBlockPos());
         String coords = String.format("X: %d Y: %d Z: %d", xCoord, yCoord, zCoord);
 
-        Text text = Text.of(coords);
+        Text text = Text.of(coords + biome);
 
         int xPosition = mc.getWindow().getScaledWidth() - 150;
         int yPosition = 50;
