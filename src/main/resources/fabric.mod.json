@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.brodi.onehack.Client"
+      "com.brodi.onehack.OneHackClient"
     ]
   },
   "mixins": [

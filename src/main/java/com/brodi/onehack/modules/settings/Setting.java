@@ -1,12 +1,14 @@
-package com.brodi.onehack.module.settings;
+package com.brodi.onehack.modules.settings;
 
-public class Setting {
+public class Setting<T> {
 
     private String name;
     private boolean visible = true;
+    private T value;
 
-    public Setting(String name) {
+    public Setting(String name, T defaultValue) {
         this.name = name;
+        this.value = defaultValue;
     }
 
     public boolean isVisible() {
@@ -19,5 +21,13 @@ public class Setting {
 
     public String getName() {
         return name;
+    }
+
+    public T getValue() {
+        return value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
     }
 }

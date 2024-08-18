@@ -1,23 +1,21 @@
-package com.brodi.onehack.module.settings;
+package com.brodi.onehack.modules.settings;
 
 import java.awt.Color;
 
-public class SpacebarSetting extends Setting {
-    public boolean enabled;
+public class SpacebarSetting extends Setting<Boolean> {
     private Color color;
 
     public SpacebarSetting(String name, Color color) {
-        super(name);
-        this.enabled = true;
+        super(name, true);  // Pass the name and the default value for 'enabled' (true).
         this.color = color;
     }
 
     public boolean isEnabled() {
-        return enabled;
+        return this.getValue(); // Use the generic getValue() method.
     }
 
     public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+        this.setValue(enabled); // Use the generic setValue() method.
     }
 
     public Color getColor() {

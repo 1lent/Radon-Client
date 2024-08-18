@@ -1,6 +1,6 @@
 package com.brodi.onehack.mixins;
 
-import com.brodi.onehack.ui.Hud;
+import com.brodi.onehack.OneHackClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,6 +13,6 @@ public class inGameHudMixin {
 
     @Inject(method = "render", at = @At("RETURN"), cancellable = true)
     public void renderHud(DrawContext context, float tickDelta, CallbackInfo ci) {
-        Hud.render(context, tickDelta);
+        OneHackClient.INSTANCE.renderHud(context, tickDelta);
     }
 }
