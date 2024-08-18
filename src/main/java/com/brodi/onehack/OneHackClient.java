@@ -33,6 +33,8 @@ public class OneHackClient implements ClientModInitializer {
     private void initializeModules() {
         modules.add(new SprintModule());
         modules.add(new FpsModule());
+        modules.add(new CoordsModule());
+        modules.add(new PingMod());
         // Add other modules here
     }
 
