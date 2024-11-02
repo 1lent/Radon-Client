@@ -1,5 +1,9 @@
 
-# OneClient
+# Radon Client
+
+# DISCONTINUED
+- can add stuff in need be, but did this project to mess around with fabric.
+
 Version 1.0.1 Beta Release
 
 Founded by 1lent (hence the "one" in OneHack)
