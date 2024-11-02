@@ -15,7 +15,7 @@ specifically designed for Minecraft versions 1.20.1+
 ### Features:
 
 - **Right Shift** = Open GUI
-  - You can drag around the tabs in the GUI and right-click to open the ones that contain modules (currently only movement modules).
+  - You can drag around the tabs in the GUI and right-click to select or activate mods.  
 - **Fps**
 - **Toggle Sprint**
 - **Ping**
