@@ -9,7 +9,7 @@ Version 1.0.1 Beta Release
 Founded by 1lent
 
 ## Overview
-OneHack is a Java utility mod
+Radon Client is a Java utility mod
 specifically designed for Minecraft versions 1.20.1+
 
 ### Features:
