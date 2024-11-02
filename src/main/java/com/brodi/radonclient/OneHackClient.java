@@ -1,6 +1,6 @@
-package com.brodi.onehack;
+package com.brodi.radonclient;
 
-import com.brodi.onehack.modules.Module;
+import com.brodi.radonclient.modules.Module;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -11,8 +11,8 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.gui.DrawContext;
 import org.lwjgl.glfw.GLFW;
 
-import com.brodi.onehack.modules.*;
-import com.brodi.onehack.gui.ModernClickGuiScreen;
+import com.brodi.radonclient.modules.*;
+import com.brodi.radonclient.gui.ModernClickGuiScreen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class OneHackClient implements ClientModInitializer {
         modules.add(new SprintModule());
         modules.add(new FpsModule());
         modules.add(new CoordsModule());
-        modules.add(new PingMod());
+        modules.add(new PingModule());
         // Add other modules here
     }
 

@@ -1,4 +1,4 @@
-package com.brodi.onehack.modules.settings;
+package com.brodi.radonclient.modules.settings;
 
 public class Setting<T> {
 

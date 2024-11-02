@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "id": "oneclient",
+  "id": "radon",
   "version": "${version}",
-  "name": "OneClient",
-  "description": "OneClient",
+  "name": "Radon",
+  "description": "Radon a small util mod that acts as a client without the extra downloads.",
   "authors": [
-    "1lent, banker, hitman"
+    "1lent"
   ],
   "contact": {
     "homepage": "",
     "sources": ""
   },
   "license": "CC0-1.0",
-  "icon": "assets/onehack/icon.png",
+  "icon": "assets/radonC/radon.jpg",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.brodi.onehack.OneHackClient"
+      "com.brodi.radonclient.OneHackClient"
     ]
   },
   "mixins": [
-    "onehack.mixins.json"
+    "radonclient.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.15.11",

@@ -1,4 +1,4 @@
-package com.brodi.onehack.modules;
+package com.brodi.radonclient.modules;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -18,7 +18,9 @@ public abstract class Module {
         this.enabled = false;  // Start disabled by default
     }
 
-    public abstract void onTick();
+    public void onTick() {
+    }
+
     public abstract void render(DrawContext context);
 
     public void toggle() {

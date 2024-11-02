@@ -1,4 +1,4 @@
-package com.brodi.onehack.modules;
+package com.brodi.radonclient.modules;
 
 import net.minecraft.client.gui.DrawContext;
 

@@ -1,6 +1,6 @@
-package com.brodi.onehack.mixins;
+package com.brodi.radonclient.mixins;
 
-import com.brodi.onehack.OneHackClient;
+import com.brodi.radonclient.OneHackClient;
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

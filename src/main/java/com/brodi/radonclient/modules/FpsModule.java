@@ -1,4 +1,4 @@
-package com.brodi.onehack.modules;
+package com.brodi.radonclient.modules;
 
 import net.minecraft.client.gui.DrawContext;
 
@@ -16,3 +16,5 @@ public class FpsModule extends Module {
         context.drawTextWithShadow(mc.textRenderer, fpsText, 5, 5, 0xFFFFFF);
     }
 }
+//            String pingText =  (ping + "ms");
+//        int ping = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(MinecraftClient.getInstance().player.getUuid()).getLatency();

@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OneClient.main.iml" filepath="$PROJECT_DIR$/.idea/modules/OneClient.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OneClient.test.iml" filepath="$PROJECT_DIR$/.idea/modules/OneClient.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Onehack.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Onehack.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Onehack.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Onehack.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.brodi.OneClient.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.brodi.OneClient.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.brodi.OneClient.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.brodi.OneClient.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.brodi.Onehack.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.brodi.Onehack.test.iml" />
     </modules>
   </component>

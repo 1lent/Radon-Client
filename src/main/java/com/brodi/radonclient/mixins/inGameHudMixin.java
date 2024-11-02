@@ -1,6 +1,6 @@
-package com.brodi.onehack.mixins;
+package com.brodi.radonclient.mixins;
 
-import com.brodi.onehack.OneHackClient;
+import com.brodi.radonclient.OneHackClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import org.spongepowered.asm.mixin.Mixin;

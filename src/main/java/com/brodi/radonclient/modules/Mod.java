@@ -1,6 +1,6 @@
-package com.brodi.onehack.modules;
+package com.brodi.radonclient.modules;
 
-import com.brodi.onehack.modules.settings.Setting;
+import com.brodi.radonclient.modules.settings.Setting;
 
 import java.util.ArrayList;
 import java.util.List;
